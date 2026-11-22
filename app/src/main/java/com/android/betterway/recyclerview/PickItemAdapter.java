@@ -1,6 +1,6 @@
 package com.android.betterway.recyclerview;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +25,7 @@ public class PickItemAdapter extends RecyclerView.Adapter<PickItemAdapter.ViewHo
     private SelectItem mSelectItem;
 
     /**
-     * 内部ViewHolder类
+     * 鍐呴儴ViewHolder绫?
      */
     static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.pickitem_name)
@@ -77,15 +77,16 @@ public class PickItemAdapter extends RecyclerView.Adapter<PickItemAdapter.ViewHo
     }
 
     /**
-     * 在活动中实现的接口
+     * 鍦ㄦ椿鍔ㄤ腑瀹炵幇鐨勬帴鍙?
      */
     public interface SelectItem {
         /**
-         * 在活动中定义的方法
+         * 鍦ㄦ椿鍔ㄤ腑瀹氫箟鐨勬柟娉?
          *
-         * @param view     view对象
-         * @param position item的位置
+         * @param view     view瀵硅薄
+         * @param position item鐨勪綅缃?
          */
         void select(View view, int position);
     }
 }
+

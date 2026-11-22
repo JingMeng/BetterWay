@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.android.betterway">
+          xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <!-- 允许程序打开网络套接字 -->
+    <!-- ?????????????????-->
     <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- 允许程序设置内置sd卡的写权限 -->
+    <!-- ????????????sd????????-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!-- 允许程序获取网络状态 -->
+    <!-- ????????????????-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <!-- 允许程序访问WiFi网络信息 -->
+    <!-- ?????????WiFi?????? -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <!-- 允许程序读写手机状态和身份 -->
+    <!-- ???????????????????? -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
+    <!-- ?????????CellID??iFi??????????????? -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <!-- 读sd卡权限 -->
+    <!-- ??d?????-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
@@ -36,7 +35,7 @@
 
         <activity
             android:name=".mainactivity.view.MainActivity"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -62,7 +61,9 @@
             android:name=".MyReceiver"
             android:enabled="true"
             android:exported="true">
-            <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
         </receiver>
     </application>
 

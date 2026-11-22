@@ -5,13 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
-import android.support.design.widget.BottomSheetDialog;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,9 +84,9 @@ public class AutoScheduleMainFragment extends Fragment implements AutoScheduleVi
     }
 
     /**
-     * 获得选择的城市并记录
+     * 鑾峰緱閫夋嫨鐨勫煄甯傚苟璁板綍
      *
-     * @param location 选择的城市
+     * @param location 閫夋嫨鐨勫煄甯?
      */
     @Subscribe(threadMode = ThreadMode.ASYNC)
     public void onLocationEvent(String location) {
@@ -99,9 +99,9 @@ public class AutoScheduleMainFragment extends Fragment implements AutoScheduleVi
     }
 
     /**
-     * 接收到dialogfragment发送的LocationPlan后的操作
+     * 鎺ユ敹鍒癲ialogfragment鍙戦€佺殑LocationPlan鍚庣殑鎿嶄綔
      *
-     * @param locationPlan 接收到的LocationPlain
+     * @param locationPlan 鎺ユ敹鍒扮殑LocationPlain
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onLocationPlanEvent(LocationPlan locationPlan) {
@@ -121,7 +121,7 @@ public class AutoScheduleMainFragment extends Fragment implements AutoScheduleVi
     }
 
     /**
-     * 初始化各个组件
+     * 鍒濆鍖栧悇涓粍浠?
      */
     private void init() {
         AutoScheduleMainFragmentComponent autoScheduleMainFragmentComponent =
@@ -162,7 +162,7 @@ public class AutoScheduleMainFragment extends Fragment implements AutoScheduleVi
                         viewHolder.itemView.setAlpha(1);
                         viewHolder.itemView.setTranslationY(0);
                     } else {
-                        //滑动时改变Item的透明度
+                        //婊戝姩鏃舵敼鍙業tem鐨勯€忔槑搴?
                         final float alpha = 1 - Math.abs(dY) / (float) viewHolder.itemView.getHeight();
                         viewHolder.itemView.setAlpha(alpha);
                         viewHolder.itemView.setTranslationY(dY);
@@ -186,7 +186,7 @@ public class AutoScheduleMainFragment extends Fragment implements AutoScheduleVi
     }
 
     /**
-     * 初始化recyclerview
+     * 鍒濆鍖杛ecyclerview
      */
     private void initView() {
         LogUtil.e(TAG, "initView()");
@@ -224,15 +224,15 @@ public class AutoScheduleMainFragment extends Fragment implements AutoScheduleVi
     }
 
     /**
-     * 点击添加事件按钮之后的逻辑
+     * 鐐瑰嚮娣诲姞浜嬩欢鎸夐挳涔嬪悗鐨勯€昏緫
      */
     public void onViewClicked() {
         if (searchLocation == null) {
-            ToastUtil.show(getContext(), "请选择地点");
+            ToastUtil.show(getContext(), "璇烽€夋嫨鍦扮偣");
             return;
         }
         if (searchLocation.equals(defaultString)) {
-            ToastUtil.show(getContext(), "请选择地点");
+            ToastUtil.show(getContext(), "璇烽€夋嫨鍦扮偣");
         } else {
             FragmentManager manager = getActivity().getSupportFragmentManager();
             LocationDialogFragment locationDialogFragment = new LocationDialogFragment();
@@ -243,8 +243,8 @@ public class AutoScheduleMainFragment extends Fragment implements AutoScheduleVi
     }
 
     /**
-     * 发送传递消息的事件
-     * @param position 地点所在list中的位置
+     * 鍙戦€佷紶閫掓秷鎭殑浜嬩欢
+     * @param position 鍦扮偣鎵€鍦╨ist涓殑浣嶇疆
      */
     private void postMarkerControl(int position) {
         MarkerControl markerControl = new MarkerControl(position);
@@ -252,7 +252,7 @@ public class AutoScheduleMainFragment extends Fragment implements AutoScheduleVi
     }
 
     /**
-     * 点击完成按钮后的动作
+     * 鐐瑰嚮瀹屾垚鎸夐挳鍚庣殑鍔ㄤ綔
      */
     public void finishPlan() {
         if (mAutoSchedulePresenterImpel.isAdded()) {
@@ -283,7 +283,7 @@ public class AutoScheduleMainFragment extends Fragment implements AutoScheduleVi
             bottomSheetDialog.setContentView(view);
             bottomSheetDialog.show();
         } else {
-            ToastUtil.show(getContext(), "请至少添加3个地点，其中第一个地点为起点");
+            ToastUtil.show(getContext(), "璇疯嚦灏戞坊鍔?涓湴鐐癸紝鍏朵腑绗竴涓湴鐐逛负璧风偣");
         }
     }
 
@@ -291,7 +291,7 @@ public class AutoScheduleMainFragment extends Fragment implements AutoScheduleVi
     public void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(getContext());
-            mProgressDialog.setMessage("正在自动生成计划，请稍等");
+            mProgressDialog.setMessage("姝ｅ湪鑷姩鐢熸垚璁″垝锛岃绋嶇瓑");
             mProgressDialog.setCancelable(false);
             mProgressDialog.setCanceledOnTouchOutside(false);
             mProgressDialog.show();
@@ -335,3 +335,4 @@ public class AutoScheduleMainFragment extends Fragment implements AutoScheduleVi
         return type;
     }
 }
+

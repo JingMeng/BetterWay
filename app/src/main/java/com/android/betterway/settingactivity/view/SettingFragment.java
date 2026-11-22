@@ -17,7 +17,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +49,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * 设置界面碎片
+ * 璁剧疆鐣岄潰纰庣墖
  */
 public class SettingFragment extends PreferenceFragment implements SettingView, Preference.OnPreferenceClickListener,
         Preference.OnPreferenceChangeListener {
@@ -93,7 +93,7 @@ public class SettingFragment extends PreferenceFragment implements SettingView, 
         initData();
     }
     /**
-     * 初始化summary
+     * 鍒濆鍖杝ummary
      */
     private void initData() {
         LogUtil.v(TAG, "initData");
@@ -149,7 +149,7 @@ public class SettingFragment extends PreferenceFragment implements SettingView, 
                 }
                 break;
             case "local_image_location":
-                RxPermissions rxPermissions = new RxPermissions(getActivity());
+                RxPermissions rxPermissions = new RxPermissions((androidx.fragment.app.FragmentActivity) getActivity());
                 rxPermissions.requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -157,16 +157,16 @@ public class SettingFragment extends PreferenceFragment implements SettingView, 
                             @Override
                             public void accept(Permission permission) throws Exception {
                                 if (permission.granted) {
-                                    // 用户已经同意该权限
+                                    // 鐢ㄦ埛宸茬粡鍚屾剰璇ユ潈闄?
                                     Intent intent = new Intent("android.intent.action.GET_CONTENT");
                                     intent.setType("image/*");
                                     startActivityForResult(intent, IMAGE_ROUTE);
                                 } else if (permission.shouldShowRequestPermissionRationale) {
-                                    // 用户拒绝了该权限，那么下次再次启动时，还会提示请求权限的对话框
-                                    ToastUtil.show(getContext(), "您已拒绝打开相册，无法选择图片");
+                                    // 鐢ㄦ埛鎷掔粷浜嗚鏉冮檺锛岄偅涔堜笅娆″啀娆″惎鍔ㄦ椂锛岃繕浼氭彁绀鸿姹傛潈闄愮殑瀵硅瘽妗?
+                                    ToastUtil.show(getContext(), "鎮ㄥ凡鎷掔粷鎵撳紑鐩稿唽锛屾棤娉曢€夋嫨鍥剧墖");
                                 } else {
-                                    // 用户拒绝了该权限，并且选中『不再询问』，提醒用户手动打开权限
-                                    ToastUtil.show(getContext(), "权限被拒绝，请在设置里面开启相应权限，若无相应权限会影响使用");
+                                    // 鐢ㄦ埛鎷掔粷浜嗚鏉冮檺锛屽苟涓旈€変腑銆庝笉鍐嶈闂€忥紝鎻愰啋鐢ㄦ埛鎵嬪姩鎵撳紑鏉冮檺
+                                    ToastUtil.show(getContext(), "权限被拒绝，请在设置中开启相应权限");
                                 }
                             }
                         });
@@ -210,13 +210,13 @@ public class SettingFragment extends PreferenceFragment implements SettingView, 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference instanceof ListPreference) {
-            //把preference这个Preference强制转化为ListPreference类型
+            //鎶妏reference杩欎釜Preference寮哄埗杞寲涓篖istPreference绫诲瀷
             ListPreference listPreference = (ListPreference) preference;
-            //获取ListPreference中的实体内容
+            //鑾峰彇ListPreference涓殑瀹炰綋鍐呭
             CharSequence[] entries = listPreference.getEntries();
-            //获取ListPreference中的实体内容的下标值
+            //鑾峰彇ListPreference涓殑瀹炰綋鍐呭鐨勪笅鏍囧€?
             int index = listPreference.findIndexOfValue((String) newValue);
-            //把listPreference中的摘要显示为当前ListPreference的实体内容中选择的那个项目
+            //鎶妉istPreference涓殑鎽樿鏄剧ず涓哄綋鍓峀istPreference鐨勫疄浣撳唴瀹逛腑閫夋嫨鐨勯偅涓」鐩?
             listPreference.setSummary(entries[index]);
             if (preference.getKey().equals("warning_time")) {
                 int i = Integer.parseInt( listPreference.getEntryValues()[index].toString());
@@ -251,3 +251,4 @@ public class SettingFragment extends PreferenceFragment implements SettingView, 
         getContext().unbindService(serviceConnection);
     }
 }
+

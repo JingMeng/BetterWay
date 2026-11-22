@@ -4,8 +4,8 @@ package com.android.betterway.autoscheduleactivity.view;
 import android.Manifest;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,7 +96,7 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
     }
 
     /**
-     * 初始化地图
+     * 鍒濆鍖栧湴鍥?
      */
     private void initMap() {
         if (aMap == null) {
@@ -125,7 +125,7 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
     }
 
     /**
-     * 按钮点击时间
+     * 鎸夐挳鐐瑰嚮鏃堕棿
      */
     @OnClick(R.id.location_text)
     public void onViewClicked() {
@@ -133,7 +133,7 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
     }
 
     /**
-     * 解析Json
+     * 瑙ｆ瀽Json
      */
     private void initJson() {
         Observable.create(new ObservableOnSubscribe<ArrayList<LocationBean>>() {
@@ -150,11 +150,11 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
                     @Override
                     public void accept(ArrayList<LocationBean> locationBeen) throws Exception {
                         options1Items = locationBeen;
-                        for (int i = 0; i < locationBeen.size(); i++) { //遍历省份
-                            ArrayList<String> mCityList = new ArrayList<>(); //该省的城市列表（第二级）
-                            for (int c = 0; c < locationBeen.get(i).getCity().size(); c++) { //遍历该省份的所有城市
+                        for (int i = 0; i < locationBeen.size(); i++) { //閬嶅巻鐪佷唤
+                            ArrayList<String> mCityList = new ArrayList<>(); //璇ョ渷鐨勫煄甯傚垪琛紙绗簩绾э級
+                            for (int c = 0; c < locationBeen.get(i).getCity().size(); c++) { //閬嶅巻璇ョ渷浠界殑鎵€鏈夊煄甯?
                                 String mCityName = locationBeen.get(i).getCity().get(c).getName();
-                                mCityList.add(mCityName); //添加城市
+                                mCityList.add(mCityName); //娣诲姞鍩庡競
                             }
                             options2Items.add(mCityList);
                         }
@@ -164,14 +164,14 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
     }
 
     /**
-     * 弹出地点选择器
+     * 寮瑰嚭鍦扮偣閫夋嫨鍣?
      */
-    private void showPickerView() { // 弹出选择器
+    private void showPickerView() { // 寮瑰嚭閫夋嫨鍣?
         OptionsPickerView pvOptions = new OptionsPickerView.Builder(
                 getContext(), new OptionsPickerView.OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                //返回的分别是两个级别的选中位置
+                //杩斿洖鐨勫垎鍒槸涓や釜绾у埆鐨勯€変腑浣嶇疆
                 String city = options2Items.get(options1).get(options2);
                 String tx = options1Items.get(options1).getPickerViewText()
                         + options2Items.get(options1).get(options2);
@@ -180,19 +180,19 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
                 doSearchGeo(tx, city);
             }
         })
-                .setSubmitText("确定")//确定按钮文字
-                .setCancelText("取消")//取消按钮文字
-                .setTitleText("请选择地点")//标题
-                .setTitleColor(primary)//标题文字颜色
-                .setSubmitColor(accent)//确定按钮文字颜色
-                .setCancelColor(accent)//取消按钮文字颜色
-                .isCenterLabel(true) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
-                .setCyclic(false, false, false)//循环与否
-                .setSelectOptions(0, 1)  //设置默认选中项
-                .setOutSideCancelable(false)//点击外部dismiss default true
-                .isDialog(false)//是否显示为对话框样式
+                .setSubmitText("纭畾")//纭畾鎸夐挳鏂囧瓧
+                .setCancelText("鍙栨秷")//鍙栨秷鎸夐挳鏂囧瓧
+                .setTitleText("璇烽€夋嫨鍦扮偣")//鏍囬
+                .setTitleColor(primary)//鏍囬鏂囧瓧棰滆壊
+                .setSubmitColor(accent)//纭畾鎸夐挳鏂囧瓧棰滆壊
+                .setCancelColor(accent)//鍙栨秷鎸夐挳鏂囧瓧棰滆壊
+                .isCenterLabel(true) //鏄惁鍙樉绀轰腑闂撮€変腑椤圭殑label鏂囧瓧锛宖alse鍒欐瘡椤筰tem鍏ㄩ儴閮藉甫鏈塴abel銆?
+                .setCyclic(false, false, false)//寰幆涓庡惁
+                .setSelectOptions(0, 1)  //璁剧疆榛樿閫変腑椤?
+                .setOutSideCancelable(false)//鐐瑰嚮澶栭儴dismiss default true
+                .isDialog(false)//鏄惁鏄剧ず涓哄璇濇鏍峰紡
                 .build();
-        pvOptions.setPicker(options1Items, options2Items); //二级选择器
+        pvOptions.setPicker(options1Items, options2Items); //浜岀骇閫夋嫨鍣?
         pvOptions.show();
     }
 
@@ -214,7 +214,7 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
         mMapview.onSaveInstanceState(outState);
     }
     /**
-     * 请求定位权限
+     * 璇锋眰瀹氫綅鏉冮檺
      */
     private void acquirePower() {
         RxPermissions rxPermissions = new RxPermissions(getActivity());
@@ -225,20 +225,20 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
                     @Override
                     public void accept(Permission permission) throws Exception {
                         if (permission.granted) {
-                            // 用户已经同意该权限
+                            // 鐢ㄦ埛宸茬粡鍚屾剰璇ユ潈闄?
                             MyLocationStyle myLocationStyle;
                             myLocationStyle = new MyLocationStyle();
                             myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE);
                             myLocationStyle.showMyLocation(false);
-                            aMap.setMyLocationStyle(myLocationStyle); //设置定位蓝点的Style
+                            aMap.setMyLocationStyle(myLocationStyle); //璁剧疆瀹氫綅钃濈偣鐨凷tyle
                             aMap.setMyLocationEnabled(true);
                             aMap.moveCamera(CameraUpdateFactory.zoomTo(13));
                         } else if (permission.shouldShowRequestPermissionRationale) {
-                            // 用户拒绝了该权限，那么下次再次启动时，还会提示请求权限的对话框
-                            ToastUtil.show(getContext(), "您已拒绝定位申请，无法定位到您的位置");
+                            // 鐢ㄦ埛鎷掔粷浜嗚鏉冮檺锛岄偅涔堜笅娆″啀娆″惎鍔ㄦ椂锛岃繕浼氭彁绀鸿姹傛潈闄愮殑瀵硅瘽妗?
+                            ToastUtil.show(getContext(), "鎮ㄥ凡鎷掔粷瀹氫綅鐢宠锛屾棤娉曞畾浣嶅埌鎮ㄧ殑浣嶇疆");
                         } else {
-                            // 用户拒绝了该权限，并且选中『不再询问』，提醒用户手动打开权限
-                            ToastUtil.show(getContext(), "权限被拒绝，请在设置里面开启相应权限，否则将无法定位到您的位置");
+                            // 鐢ㄦ埛鎷掔粷浜嗚鏉冮檺锛屽苟涓旈€変腑銆庝笉鍐嶈闂€忥紝鎻愰啋鐢ㄦ埛鎵嬪姩鎵撳紑鏉冮檺
+                            ToastUtil.show(getContext(), "鏉冮檺琚嫆缁濓紝璇峰湪璁剧疆閲岄潰寮€鍚浉搴旀潈闄愶紝鍚﹀垯灏嗘棤娉曞畾浣嶅埌鎮ㄧ殑浣嶇疆");
                         }
                     }
                 });
@@ -275,9 +275,9 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
     }
 
     /**
-     * 由城市名查询地理位置
-     * @param address 地址
-     * @param name 城市名字
+     * 鐢卞煄甯傚悕鏌ヨ鍦扮悊浣嶇疆
+     * @param address 鍦板潃
+     * @param name 鍩庡競鍚嶅瓧
      */
     private void doSearchGeo(String address, String name) {
         GeocodeSearch geocoderSearch = new GeocodeSearch(getContext());
@@ -287,8 +287,8 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
     }
 
     /**
-     * 取得获得的坐标并移动地图到该坐标
-     * @param latLonPoint 获得的坐标
+     * 鍙栧緱鑾峰緱鐨勫潗鏍囧苟绉诲姩鍦板浘鍒拌鍧愭爣
+     * @param latLonPoint 鑾峰緱鐨勫潗鏍?
      */
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void onLatLngPointEvent(LatLonPoint latLonPoint) {
@@ -298,8 +298,8 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
     }
 
     /**
-     * 记录获得点的坐标
-     * @param mapMarker 记录的信号
+     * 璁板綍鑾峰緱鐐圭殑鍧愭爣
+     * @param mapMarker 璁板綍鐨勪俊鍙?
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onIntEvent(MapMarker mapMarker) {
@@ -313,8 +313,8 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
     }
 
     /**
-     * 删除地图上的标记
-     * @param markerControl 传递消息的对象
+     * 鍒犻櫎鍦板浘涓婄殑鏍囪
+     * @param markerControl 浼犻€掓秷鎭殑瀵硅薄
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void deleteMarker(MarkerControl markerControl) {
@@ -332,10 +332,11 @@ public class AutoScheduleAssistFragment extends Fragment implements AMap.OnMyLoc
         }
     }
     /**
-     * 发送选择的城市
-     * @param city 选择的城市
+     * 鍙戦€侀€夋嫨鐨勫煄甯?
+     * @param city 閫夋嫨鐨勫煄甯?
      */
     private void sendSearchLocation(String city) {
         EventBus.getDefault().post(city);
     }
 }
+

@@ -3,7 +3,7 @@ package com.android.betterway.showscheduleactivity.view;
 
 import android.Manifest;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +52,7 @@ public class ScheduleMapFragment extends Fragment {
     }
 
     /**
-     * 初始化坐标
+     * 鍒濆鍖栧潗鏍?
      */
     private void initLatLng() {
         for (int i = 0; i < mLatLngList.size(); i++) {
@@ -65,7 +65,7 @@ public class ScheduleMapFragment extends Fragment {
     }
 
     /**
-     * 初始化地图
+     * 鍒濆鍖栧湴鍥?
      */
     private void initMap() {
         if (mAMap == null) {
@@ -99,3 +99,4 @@ public class ScheduleMapFragment extends Fragment {
     }
 
 }
+

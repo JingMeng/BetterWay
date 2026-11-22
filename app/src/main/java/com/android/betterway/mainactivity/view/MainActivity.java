@@ -7,15 +7,15 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.graphics.Palette;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSnapHelper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.fragment.app.FragmentManager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -67,7 +67,7 @@ import io.reactivex.schedulers.Schedulers;
 
 
 /**
- * 主界面
+ * 涓荤晫闈?
  */
 public class MainActivity extends AppCompatActivity implements MainView, View.OnTouchListener {
 
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     }
 
     /**
-     * 初始化菜单等
+     * 鍒濆鍖栬彍鍗曠瓑
      */
     private void init() {
         LogUtil.d(TAG, "init");
@@ -283,8 +283,8 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     }
 
     /**
-     * 点击事件
-     * @param view 传递点击事件的view
+     * 鐐瑰嚮浜嬩欢
+     * @param view 浼犻€掔偣鍑讳簨浠剁殑view
      */
     @OnClick({R.id.addAutoSchedule, R.id.addNormalSchedule})
     public void onViewClicked(View view) {
@@ -306,8 +306,8 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     }
 
     /**
-     * EventBus接受事件
-     * @param buttonSwith 获取开关状态
+     * EventBus鎺ュ彈浜嬩欢
+     * @param buttonSwith 鑾峰彇寮€鍏崇姸鎬?
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onButtonSwithHandle(ButtonSwith buttonSwith) {
@@ -315,8 +315,8 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     }
 
     /**
-     * 对所在界面截图
-     * @param buttonSwith 接收的开关状态
+     * 瀵规墍鍦ㄧ晫闈㈡埅鍥?
+     * @param buttonSwith 鎺ユ敹鐨勫紑鍏崇姸鎬?
      */
     private void showBlurBackground(ButtonSwith buttonSwith) {
         if (buttonSwith == ButtonSwith.OPEN) {
@@ -349,8 +349,8 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     }
 
     /**
-     * 设置当前活动的主题色
-     * @param mColor 要设置的颜色
+     * 璁剧疆褰撳墠娲诲姩鐨勪富棰樿壊
+     * @param mColor 瑕佽缃殑棰滆壊
      */
     private void setThemeColor(int mColor) {
         mNotificationBackground.setContentScrimColor(mColor);
@@ -358,7 +358,7 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     }
 
     /**
-     * 取消毛玻璃特效背景
+     * 鍙栨秷姣涚幓鐠冪壒鏁堣儗鏅?
      */
     private void closeBlurBackground() {
         mBlurFragment.setBackground(null);
@@ -366,8 +366,8 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     }
 
     /**
-     * 展示DialogFragment
-     * @param activityType 展示类型
+     * 灞曠ずDialogFragment
+     * @param activityType 灞曠ず绫诲瀷
      */
     private void showDatePickerDialog(ActivityType activityType) {
         FragmentManager manager = getSupportFragmentManager();
@@ -376,3 +376,4 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
         datePickerFragment.show(manager, "DatePickerFragment");
     }
 }
+

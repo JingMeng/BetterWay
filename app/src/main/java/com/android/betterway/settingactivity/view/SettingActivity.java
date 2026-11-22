@@ -1,8 +1,8 @@
 package com.android.betterway.settingactivity.view;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.android.betterway.R;
@@ -11,7 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * 设置类
+ * 璁剧疆绫?
  */
 public class SettingActivity extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     /**
-     * 初始化
+     * 鍒濆鍖?
      */
     private void init() {
         setSupportActionBar(mToolbar);
@@ -48,3 +48,4 @@ public class SettingActivity extends AppCompatActivity {
         return true;
     }
 }
+

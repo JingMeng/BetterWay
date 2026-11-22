@@ -1,6 +1,6 @@
 package com.android.betterway.recyclerview;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +34,7 @@ public class LocationPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private AddLocationButton mAddLocationButton;
 
     /**
-     * content类
+     * content绫?
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         View mView;
@@ -60,7 +60,7 @@ public class LocationPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     /**
-     * 底部按钮类
+     * 搴曢儴鎸夐挳绫?
      */
     public static class BottomViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.add_location_button)
@@ -75,10 +75,10 @@ public class LocationPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         mLocationPlanList = new ArrayList<>();
     }
     /**
-     * 根据位置判断item的类型
+     * 鏍规嵁浣嶇疆鍒ゆ柇item鐨勭被鍨?
      *
-     * @param position 位置
-     * @return 类型
+     * @param position 浣嶇疆
+     * @return 绫诲瀷
      */
     @Override
     public int getItemViewType(int position) {
@@ -119,7 +119,7 @@ public class LocationPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 ((ViewHolder) holder).mSpendMoneyInItem.setVisibility(View.GONE);
             }
             if (locationPlan.getStayMinutes() != 0) {
-                String stayMinutes = locationPlan.getStayMinutes() + "分钟";
+                String stayMinutes = locationPlan.getStayMinutes() + "鍒嗛挓";
                 ((ViewHolder) holder).mSpendTimeInItem.setText(stayMinutes);
             } else {
                 ((ViewHolder) holder).mSpendTimeInItem.setVisibility(View.GONE);
@@ -149,11 +149,11 @@ public class LocationPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     /**
-     * button实现的接口
+     * button瀹炵幇鐨勬帴鍙?
      */
     public interface AddLocationButton {
         /**
-         * 由外部实现的接口函数
+         * 鐢卞閮ㄥ疄鐜扮殑鎺ュ彛鍑芥暟
          */
         void buttonClick();
     }
@@ -164,8 +164,8 @@ public class LocationPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     /**
-     * 增加地点
-     * @param locationPlan 增加的地点
+     * 澧炲姞鍦扮偣
+     * @param locationPlan 澧炲姞鐨勫湴鐐?
      */
     public void addLocationPlan(LocationPlan locationPlan) {
         mLocationPlanList.add(locationPlan);
@@ -173,16 +173,16 @@ public class LocationPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     /**
-     * 返回是否为第一个地点
-     * @return 判断
+     * 杩斿洖鏄惁涓虹涓€涓湴鐐?
+     * @return 鍒ゆ柇
      */
     public boolean getIsFirst() {
         return mLocationPlanList.size() == 0;
     }
 
     /**
-     * 移除地点
-     * @param position 需要移除地点的位置
+     * 绉婚櫎鍦扮偣
+     * @param position 闇€瑕佺Щ闄ゅ湴鐐圭殑浣嶇疆
      */
     public void removeLocationPlan(int position) {
         mLocationPlanList.remove(position);
@@ -190,7 +190,7 @@ public class LocationPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     /**
-     * 移除所有的地点
+     * 绉婚櫎鎵€鏈夌殑鍦扮偣
      */
     public void removeAllLocationPlan() {
         int i = mLocationPlanList.size();
@@ -201,8 +201,8 @@ public class LocationPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     /**
-     * 发送消息
-     * @param latLonPoint 地点信息
+     * 鍙戦€佹秷鎭?
+     * @param latLonPoint 鍦扮偣淇℃伅
      */
     private void postLatLngPointEvent(LatLonPoint latLonPoint) {
         EventBus.getDefault().post(latLonPoint);
@@ -212,3 +212,4 @@ public class LocationPlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return mLocationPlanList;
     }
 }
+

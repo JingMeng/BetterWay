@@ -2,11 +2,11 @@ package com.android.betterway.itempickeractivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -27,7 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * 选择地点的类
+ * 閫夋嫨鍦扮偣鐨勭被
  */
 public class ItemPickerActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,
         Inputtips.InputtipsListener {
@@ -50,7 +50,7 @@ public class ItemPickerActivity extends AppCompatActivity implements SearchView.
     }
 
     /**
-     * 初始化控件
+     * 鍒濆鍖栨帶浠?
      */
     private void init() {
         setSupportActionBar(mPickitemToolbar);
@@ -132,17 +132,17 @@ public class ItemPickerActivity extends AppCompatActivity implements SearchView.
     }
 
     /**
-     * 判断字符串是否为空
-     * @param s 需要判断的字符串
-     * @return 是否为空
+     * 鍒ゆ柇瀛楃涓叉槸鍚︿负绌?
+     * @param s 闇€瑕佸垽鏂殑瀛楃涓?
+     * @return 鏄惁涓虹┖
      */
     private static boolean isEmptyOrNullString(String s) {
         return (s == null) || (s.trim().length() == 0);
     }
 
     /**
-     * 选择地点
-     * @param position 选择地点的排列号
+     * 閫夋嫨鍦扮偣
+     * @param position 閫夋嫨鍦扮偣鐨勬帓鍒楀彿
      */
     private void selectItem(int position) {
         if (mLocationItemBeanList != null) {
@@ -154,3 +154,4 @@ public class ItemPickerActivity extends AppCompatActivity implements SearchView.
         }
     }
 }
+

@@ -10,7 +10,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import com.android.betterway.R;
 import com.android.betterway.data.Schedule;
 import com.android.betterway.mainactivity.model.MainModel;
@@ -31,7 +31,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * 后台服务
+ * 鍚庡彴鏈嶅姟
  */
 public class MyService extends Service {
     public static final int SCHEDULE_ADD = 110;
@@ -54,7 +54,7 @@ public class MyService extends Service {
     }
 
     /**
-     * 初始化提醒时间
+     * 鍒濆鍖栨彁閱掓椂闂?
      */
     private void initDuraion() {
         io.reactivex.Observable.create(new ObservableOnSubscribe<Integer>() {
@@ -117,8 +117,8 @@ public class MyService extends Service {
         Intent intent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
         Notification notification = new NotificationCompat.Builder(this)
-                .setContentTitle("提醒")
-                .setContentText("路书行程即将开始")
+                .setContentTitle("鎻愰啋")
+                .setContentText("行程即将开始")
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.drawable.ic_stat_warn)
                 .setContentIntent(pendingIntent)
@@ -126,7 +126,7 @@ public class MyService extends Service {
         startForeground(1, notification);
     }
     /**
-     * 初始化日期
+     * 鍒濆鍖栨棩鏈?
      */
     private void initDates() {
         io.reactivex.Observable.create(new ObservableOnSubscribe<List<Schedule>>() {
@@ -165,7 +165,7 @@ public class MyService extends Service {
     }
 
     /**
-     * 内部静态类
+     * 鍐呴儴闈欐€佺被
      */
     private static class MessagerHandler extends Handler {
         private static  HandlerInterface sHandlerInterface;
@@ -224,3 +224,4 @@ public class MyService extends Service {
         return mMessenger.getBinder();
     }
 }
+

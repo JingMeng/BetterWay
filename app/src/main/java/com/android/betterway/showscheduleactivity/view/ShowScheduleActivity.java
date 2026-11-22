@@ -6,14 +6,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.android.betterway.R;
@@ -61,7 +61,7 @@ public class ShowScheduleActivity extends AppCompatActivity implements ShowSched
     }
 
     /**
-     * 初始化控件
+     * 鍒濆鍖栨帶浠?
      */
     private void init() {
         setSupportActionBar(mToolbarShowSchedule);
@@ -128,9 +128,9 @@ public class ShowScheduleActivity extends AppCompatActivity implements ShowSched
                 break;
             case R.id.delete:
                 AlertDialog dialog = new AlertDialog.Builder(this)
-                        .setMessage("确定要删除此路书吗？")
-                        .setNegativeButton("取消", null)
-                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        .setMessage("纭畾瑕佸垹闄ゆ璺功鍚楋紵")
+                        .setNegativeButton("鍙栨秷", null)
+                        .setPositiveButton("纭畾", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 if (weatherStore == NEW) {
@@ -205,3 +205,4 @@ public class ShowScheduleActivity extends AppCompatActivity implements ShowSched
         }
     }
 }
+

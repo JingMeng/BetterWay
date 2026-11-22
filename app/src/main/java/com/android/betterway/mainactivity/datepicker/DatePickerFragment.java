@@ -5,8 +5,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -19,7 +19,7 @@ import com.android.betterway.utils.LogUtil;
 import com.android.betterway.utils.TimeUtil;
 
 /**
- * 日期DialogFragment类
+ * 鏃ユ湡DialogFragment绫?
  */
 public class DatePickerFragment extends DialogFragment {
     private static final String TAG = "DatePickerFragment";
@@ -83,3 +83,4 @@ public class DatePickerFragment extends DialogFragment {
         return dialog;
     }
 }
+

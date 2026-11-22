@@ -1,6 +1,6 @@
 package com.android.betterway.recyclerview;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,9 +85,10 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
 
     public interface Agency {
         /**
-         * 代理的接口函数
-         * @param position item的位置
+         * 浠ｇ悊鐨勬帴鍙ｅ嚱鏁?
+         * @param position item鐨勪綅缃?
          */
         void toDetails(int position);
     }
 }
+

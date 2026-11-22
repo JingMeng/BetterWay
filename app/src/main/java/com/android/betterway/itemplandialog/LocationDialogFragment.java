@@ -5,11 +5,11 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetDialog;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,18 +76,18 @@ public class LocationDialogFragment extends DialogFragment implements View.OnCli
                 .setIcon(R.drawable.ic_action_item_dialog)
                 .setView(view)
                 .setTitle("请输入信息")
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                .setPositiveButton("纭畾", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (TextUtils.isEmpty(mEditLocation.getText())) {
-                            ToastUtil.show(getContext(), "未选择地点");
+                            ToastUtil.show(getContext(), "鏈€夋嫨鍦扮偣");
                         } else {
                             getLocationPlanData();
                             postSureCode(MapMarker.ADD);
                         }
                     }
                 })
-                .setNegativeButton("取消", null);
+                .setNegativeButton("鍙栨秷", null);
         AlertDialog alertDialog = builder.create();
         alertDialog.setOnCancelListener(null);
         if (alertDialog.getWindow() != null) {
@@ -98,8 +98,8 @@ public class LocationDialogFragment extends DialogFragment implements View.OnCli
     }
 
     /**
-     * 初始化控件
-     * @param view 容器view
+     * 鍒濆鍖栨帶浠?
+     * @param view 瀹瑰櫒view
      */
     private void initView(View view) {
         mEditLocation = (Button) view.findViewById(R.id.edit_location);
@@ -169,13 +169,13 @@ public class LocationDialogFragment extends DialogFragment implements View.OnCli
             postLatlngPointEvent(locationItemBean.getLatLonPoint());
             mLatLonPoint = locationItemBean.getLatLonPoint();
         } else if (resultCode == WRONGCODE) {
-            ToastUtil.show(getContext(), "请选择一个精确的地点");
+            ToastUtil.show(getContext(), "璇烽€夋嫨涓€涓簿纭殑鍦扮偣");
         }
     }
 
     /**
-     * 发送选择地点的坐标
-     * @param latLonPoint 选择地点的坐标
+     * 鍙戦€侀€夋嫨鍦扮偣鐨勫潗鏍?
+     * @param latLonPoint 閫夋嫨鍦扮偣鐨勫潗鏍?
      */
     private void postLatlngPointEvent(LatLonPoint latLonPoint) {
         LogUtil.e("DialogFragment", "postLatlngPoint");
@@ -183,8 +183,8 @@ public class LocationDialogFragment extends DialogFragment implements View.OnCli
     }
 
     /**
-     * 发送确定的信号，保存坐标
-     * @param mapMarker 信号
+     * 鍙戦€佺‘瀹氱殑淇″彿锛屼繚瀛樺潗鏍?
+     * @param mapMarker 淇″彿
      */
     private void postSureCode(MapMarker mapMarker) {
         LogUtil.e("DialogFragment", "PostSureCode");
@@ -192,7 +192,7 @@ public class LocationDialogFragment extends DialogFragment implements View.OnCli
     }
 
     /**
-     * 获得用户输入的数据
+     * 鑾峰緱鐢ㄦ埛杈撳叆鐨勬暟鎹?
      */
     public void getLocationPlanData() {
         LocationPlan locationPlan = new LocationPlan();
@@ -217,8 +217,8 @@ public class LocationDialogFragment extends DialogFragment implements View.OnCli
     }
 
     /**
-     * 通过事件总线发送LocationPlan
-     * @param locationPlan 需要发送的LocationPlan
+     * 閫氳繃浜嬩欢鎬荤嚎鍙戦€丩ocationPlan
+     * @param locationPlan 闇€瑕佸彂閫佺殑LocationPlan
      */
     private void postLocationPlanData(LocationPlan locationPlan) {
         LogUtil.d("DialogFragment", "postLocationPlanData()");
@@ -226,10 +226,11 @@ public class LocationDialogFragment extends DialogFragment implements View.OnCli
     }
 
     /**
-     * 设置是否为第一个事件
-     * @param misFitst MainFragment中传递的booleean
+     * 璁剧疆鏄惁涓虹涓€涓簨浠?
+     * @param misFitst MainFragment涓紶閫掔殑booleean
      */
     public void setisFitst(boolean misFitst) {
         isFitst = misFitst;
     }
 }
+

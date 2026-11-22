@@ -3,8 +3,8 @@ package com.android.betterway.autoscheduleactivity.view;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -23,7 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * 自动生成路径的类
+ * 鑷姩鐢熸垚璺緞鐨勭被
  */
 public class AutoScheduleActivity extends AppCompatActivity {
     @BindView(R.id.toolbar_auto_schedule)
@@ -40,7 +40,7 @@ public class AutoScheduleActivity extends AppCompatActivity {
     }
 
     /**
-     * 初始化
+     * 鍒濆鍖?
      */
     private void init() {
         setSupportActionBar(mToolbarAutoSchedule);
@@ -53,9 +53,9 @@ public class AutoScheduleActivity extends AppCompatActivity {
         datelong = intent.getLongExtra("datelong", 20171114);
         type = intent.getIntExtra("type", 2);
         if (type == 1) {
-            mToolbarAutoSchedule.setTitle("自动路书");
+            mToolbarAutoSchedule.setTitle("鑷姩璺功");
         } else {
-            mToolbarAutoSchedule.setTitle("自定义路书");
+            mToolbarAutoSchedule.setTitle("自定义路线");
         }
         mToolbarAutoSchedule.setSubtitle(date);
     }
@@ -107,3 +107,4 @@ public class AutoScheduleActivity extends AppCompatActivity {
         }
     }
 }
+

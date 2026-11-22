@@ -1,6 +1,6 @@
 package com.android.betterway.autoscheduleactivity.daggerneed;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.android.betterway.autoscheduleactivity.present.AutoSchedulePresenterImpel;
 
@@ -14,14 +14,15 @@ import dagger.Component;
 @Component(modules = AutoSchedulePresenterImpelModule.class)
 public interface AutoScheduleMainFragmentComponent {
     /**
-     * 注入依赖
-     * @param fragment 注入依赖的目标fragment
+     * 娉ㄥ叆渚濊禆
+     * @param fragment 娉ㄥ叆渚濊禆鐨勭洰鏍噁ragment
      */
     void inject(Fragment fragment);
 
     /**
-     * 获得AutoSchedulePresenterImpel实例
-     * @return 返回实例
+     * 鑾峰緱AutoSchedulePresenterImpel瀹炰緥
+     * @return 杩斿洖瀹炰緥
      */
     AutoSchedulePresenterImpel getAutoAutoSchedulePresenterImpel();
 }
+

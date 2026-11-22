@@ -1,6 +1,6 @@
 package com.android.betterway.recyclerview;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +35,7 @@ public class ShowScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     /**
-     * 地点ViewHolder
+     * 鍦扮偣ViewHolder
      */
     public static class LocationViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.location_show)
@@ -55,7 +55,7 @@ public class ShowScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     /**
-     * 路径ViewHolder
+     * 璺緞ViewHolder
      */
     public static class RouteViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.way_fee_layout)
@@ -126,16 +126,16 @@ public class ShowScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
             switch (newPlan.getType()) {
                 case BIKE:
-                    ((RouteViewHolder) holder).goWayShow.setText("骑行");
+                    ((RouteViewHolder) holder).goWayShow.setText("楠戣");
                     break;
                 case CAR:
-                    ((RouteViewHolder) holder).goWayShow.setText("驾车");
+                    ((RouteViewHolder) holder).goWayShow.setText("椹捐溅");
                     break;
                 case BUS:
-                    ((RouteViewHolder) holder).goWayShow.setText("公交");
+                    ((RouteViewHolder) holder).goWayShow.setText("鍏氦");
                     break;
                 case WALK:
-                    ((RouteViewHolder) holder).goWayShow.setText("步行");
+                    ((RouteViewHolder) holder).goWayShow.setText("姝ヨ");
                     break;
                 default:
                     break;
@@ -150,3 +150,4 @@ public class ShowScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return mNewPlanList.size();
     }
 }
+
